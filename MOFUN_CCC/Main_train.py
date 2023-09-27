@@ -197,4 +197,4 @@ if __name__ == '__main__':
     #                           Output="./test")
 # Test Run
 # python Main_train.py --Count /ix1/wchen/Molin/Research/Paper_Prep/Data/EVAPR_Blood/CTcount.txt --RNA /ix1/wchen/Molin/Research/Paper_Prep/Data/EVAPR_Blood/rawTPM.txt --DNAm /ix1/wchen/Molin/Research/Paper_Prep/Data/EVAPR_Blood/rawBeta.txt --Output ./test
-# python Main_train.py --Count /ix1/wchen/Molin/Research/Paper_Prep/Data/EVAPR_Blood/CTcount.txt --RNA /ix1/wchen/Molin/Research/Paper_Prep/Data/EVAPR_Blood/rawTPM.txt --DNAm /ix1/wchen/Molin/Research/Paper_Prep/Data/EVAPR_Blood/rawBeta.txt --Output ./test --GEP_Marker ./test/Gene_Marker_FC.txt --DNAm_Marker ./test/CpGs_Marker_FC.txt --Marker_Method FC
+# python Main_train.py --Count /ix1/wchen/Molin/Research/Paper_Prep/Data/EVAPR_Blood/CTcount.txt --RNA /ix1/wchen/Molin/Research/Paper_Prep/Data/EVAPR_Blood/rawTPM.txt --DNAm /ix1/wchen/Molin/Research/Paper_Prep/Data/EVAPR_Blood/rawBeta.txt --Output ./test --GEP_Marker /ix1/wchen/Molin/Research/Paper_Prep/Algo/test/Gene_Marker_FC.txt --DNAm_Marker /ix1/wchen/Molin/Research/Paper_Prep/Algo/test/CpGs_Marker_FC.txt --Marker_Method FC
