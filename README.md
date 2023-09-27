@@ -12,67 +12,63 @@ TODO:
 6. add GUI
 
 
-## In this README :
+## Table of Contents:
 
-- [Features](#features)
+- [Introduction](#introduction)
+- [Installation](#installation)
 - [Usage](#usage)
-  - [Initial setup](#initial-setup)
-  - [Creating releases](#creating-releases)
-- [Contributing](#contributing)
+- [Arguments](#arguments)
+- [Examples](#examples)
+
+## Introduction
+
+Provide an introduction to your project. Explain what it does and why someone might want to use it.
+
+## Installation
+
+```bash
+# Create Conda Environment
+conda create -n MOFUN_CCC python=3.10.8 -y
+conda activate MOFUN_CCC
+
+# Install pytorch for GPU
+pip3 install torch torchvision torchaudio
+
+# Change into the project directory
+git clone https://github.com/yuemolin/MOFUN-CCC.git
+cd MOFUN-CCC
+pip install -r requirements.txt
+```
 
 ## Usage
+Explain how to use your script or project. You can include simple usage examples here.
+```
+python MOFUN_CCC/Main_train.py --Count <counts.txt> --RNA <rna.txt> --DNAm <dnacpg.txt> --Output <output_folder>
+```
+## Examples
+Provide some usage examples to demonstrate how your script can be used in different scenarios.
+# Example 1: Basic usage
+python your_script.py --Count counts.txt --RNA rna.txt --DNAm dnacpg.txt --Output output_folder
 
-### Initial setup
+# Example 2: Specify marker file and method
+python your_script.py --Count counts.txt --RNA rna.txt --DNAm dnacpg.txt --Output output_folder --GEP_Marker markers.txt --Marker_Method FC
 
-1. [Create a new repository](https://github.com/allenai/python-package-template/generate) from this template with the desired name of your project.
+# Example 3: Change model parameters
+python your_script.py --Count counts.txt --RNA rna.txt --DNAm dnacpg.txt --Output output_folder --Model custom_model.json --Loss L2loss --Activation Celu
 
-    *Your project name (i.e. the name of the repository) and the name of the corresponding Python package don't necessarily need to match, but you might want to check on [PyPI](https://pypi.org/) first to see if the package name you want is already taken.*
 
-2. Create a Python 3.8 or newer virtual environment.
+## Arguments
+List and describe each command-line argument your script accepts. Include the argument name, type, whether it's required or has a default value, and a brief description of its purpose.
 
-    *If you're not sure how to create a suitable Python environment, the easiest way is using [Miniconda](https://docs.conda.io/en/latest/miniconda.html). On a Mac, for example, you can install Miniconda using [Homebrew](https://brew.sh/):*
-
-    ```
-    brew install miniconda
-    ```
-
-    *Then you can create and activate a new Python environment by running:*
-
-    ```
-    conda create -n my-package python=3.9
-    conda activate my-package
-    ```
-
-3. Now that you have a suitable Python environment, you're ready to personalize this repository. Just run:
-
-    ```
-    pip install -r setup-requirements.txt
-    python scripts/personalize.py
-    ```
-
-    And then follow the prompts.
-
-    :pencil: *NOTE: This script will overwrite the README in your repository.*
-
-4. Commit and push your changes, then make sure all GitHub Actions jobs pass.
-
-5. (Optional) If you plan on publishing your package to PyPI, add repository secrets for `PYPI_USERNAME` and `PYPI_PASSWORD`. To add these, go to "Settings" > "Secrets" > "Actions", and then click "New repository secret".
-
-    *If you don't have PyPI account yet, you can [create one for free](https://pypi.org/account/register/).*
-
-6. (Optional) If you want to deploy your API docs to [readthedocs.org](https://readthedocs.org), go to the [readthedocs dashboard](https://readthedocs.org/dashboard/import/?) and import your new project.
-
-    Then click on the "Admin" button, navigate to "Automation Rules" in the sidebar, click "Add Rule", and then enter the following fields:
-
-    - **Description:** Publish new versions from tags
-    - **Match:** Custom Match
-    - **Custom match:** v[vV]
-    - **Version:** Tag
-    - **Action:** Activate version
-
-    Then hit "Save".
-
-    *After your first release, the docs will automatically be published to [your-project-name.readthedocs.io](https://your-project-name.readthedocs.io/).*
+--Count (required, str): Tab-separated TXT cell counts file (rows: Samples, columns: Cell types).
+--RNA (required, str): Tab-separated TXT gene TPM file (rows: Genes, columns: Samples).
+--DNAm (required, str): Tab-separated TXT CpG Beta file (rows: CpGs, columns: Samples).
+--Output (required, str): Output folder path for model saving.
+--GEP_Marker (str): Path of the marker file, list of Gene names or Association matrix, generate when leaving blank.
+--DNAm_Marker (str): Path of the marker file, list of CpG names or Association matrix, generate when leaving blank.
+--Marker_Method (str, choices=["FC", "P"]): Marker selection method, FC: by fold change, P: by p-value.
+--RNA_Marker_num (int, default=6000): Number of RNA markers to select based on Marker_Method.
+--DNAm_Marker_num (int, default=6000): Number of DNAm markers to select based on Marker_Method.
 
 ## Contributing
 
