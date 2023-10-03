@@ -47,10 +47,10 @@ def main(args):
 if __name__ == '__main__':
     args = get_args_parser()
     args = args.parse_args()
-    # args = argparse.Namespace(RNA="/ix1/wchen/Molin/Research/Paper_Prep/PublicData/01_Covid/01_GEP.txt",
-    #                           DNAm="/ix1/wchen/Molin/Research/Paper_Prep/PublicData/01_Covid/01_Methyl.txt",
-    #                           Output="./test/COVID_test.txt",
-    #                           Model_Path='./test/')
+    # args = argparse.Namespace(RNA="/ix1/wchen/DATA/BulkMultiOmics/Cleaned/13_GEP.txt",
+    #                           DNAm="/ix1/wchen/DATA/BulkMultiOmics/Cleaned/13_Methyl.txt",
+    #                           Output="/ix1/wchen/Molin/Research/Paper_Prep/PublicData/13_Asthma_PBMC/MOFUN_EVAPR_model_pred.txt",
+    #                           Model_Path='/ihome/wchen/moy6/software/MOFUN_CCC/MOFUN_CCC/Models/EVAPR_blood_model')
 
     print(Logo)
     print("Author: Molin Yue, Email: moy6@pitt.edu, Last updated: 2023-09-25")

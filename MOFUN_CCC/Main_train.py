@@ -89,6 +89,10 @@ def main(args):
     Count_Data = pd.read_table(args.Count, index_col=0)
     GEP_Data = pd.read_table(args.RNA, index_col=0)
     DNAm_Data = pd.read_table(args.DNAm, index_col=0)
+    CommonID = Count_Data.index.intersection(GEP_Data.columns).intersection(DNAm_Data.columns)
+    Count_Data = Count_Data.loc[CommonID,:]
+    GEP_Data = GEP_Data.loc[:,CommonID]
+    DNAm_Data = DNAm_Data.loc[:,CommonID]
     OutputFolder = args.Output
     if not os.path.exists(OutputFolder):
         os.makedirs(OutputFolder)
@@ -188,13 +192,17 @@ if __name__ == '__main__':
     print(Logo)
     print("Author: Molin Yue, Email: moy6@pitt.edu, Last updated: 2023-09-25")
     main(args)
-    # args = argparse.Namespace(Count = "/ix1/wchen/Molin/Research/Paper_Prep/Data/EVAPR_Blood/CTcount.txt",
-    #                           RNA="/ix1/wchen/Molin/Research/Paper_Prep/Data/EVAPR_Blood/rawTPM.txt",
-    #                           DNAm="/ix1/wchen/Molin/Research/Paper_Prep/Data/EVAPR_Blood/rawBeta.txt",
+    # args = argparse.Namespace(Count = "/ix1/wchen/Molin/Research/Paper_Prep/Data/Nasal3/CTcount.txt",
+    #                           RNA="/ix1/wchen/Molin/Research/Paper_Prep/Data/Nasal3/rawTPM.txt",
+    #                           DNAm="/ix1/wchen/Molin/Research/Paper_Prep/Data/Nasal3/rawBeta.txt",
     #                           GEP_Marker = "./test/Gene_Marker_FC.txt",
     #                           DNAm_Marker = "./test/CpGs_Marker_FC.txt",
     #                           Marker_Method = "FC",
     #                           Output="./test")
 # Test Run
-# python Main_train.py --Count /ix1/wchen/Molin/Research/Paper_Prep/Data/EVAPR_Blood/CTcount.txt --RNA /ix1/wchen/Molin/Research/Paper_Prep/Data/EVAPR_Blood/rawTPM.txt --DNAm /ix1/wchen/Molin/Research/Paper_Prep/Data/EVAPR_Blood/rawBeta.txt --Output ./test
+# python Main_train.py \
+# --Count /ix1/wchen/Molin/Research/Paper_Prep/Data/FHS_Blood/CTcount.txt \
+# --RNA /ix1/wchen/Molin/Research/Paper_Prep/Data/FHS_Blood/lg2Intensity.txt \
+# --DNAm /ix1/wchen/Molin/Research/Paper_Prep/Data/FHS_Blood/rawBeta.txt \
+# --Output ./
 # python Main_train.py --Count /ix1/wchen/Molin/Research/Paper_Prep/Data/EVAPR_Blood/CTcount.txt --RNA /ix1/wchen/Molin/Research/Paper_Prep/Data/EVAPR_Blood/rawTPM.txt --DNAm /ix1/wchen/Molin/Research/Paper_Prep/Data/EVAPR_Blood/rawBeta.txt --Output ./test --GEP_Marker /ix1/wchen/Molin/Research/Paper_Prep/Algo/test/Gene_Marker_FC.txt --DNAm_Marker /ix1/wchen/Molin/Research/Paper_Prep/Algo/test/CpGs_Marker_FC.txt --Marker_Method FC
