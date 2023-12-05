@@ -1,7 +1,11 @@
 # MOFUN-CCC
+
+<img src='image/Logo.png' align="left" width=380>
+
 **M**ulti **O**mics **FU**sion neural **n**etwork - **C**omputational **C**ell **C**ounting
 
 MOFUN-CCC is a multi-modal deep learning algorithm that operates under a supervised framework, leveraging intermediate fusion techniques to process bulk gene expression and bulk DNA methylation data. Its primary objective is to generate absolute cell counts as its output.
+
 
 TODO: 
 1. Add program image
@@ -22,7 +26,27 @@ TODO:
 
 ## Introduction
 
-Provide an introduction to your project. Explain what it does and why someone might want to use it.
+**MOFUN-CCC** is a deep learning-based cell count prediction model designed for GPU acceleration within the PyTorch environment. This versatile tool serves two primary functions:
+
+1. **Predict Cell Counts**:   
+   Utilize pretrained models to predict cell counts from both **bulk gene expression** and **bulk DNA methylation data**. Our algorithm is optimized for the most accurate predictions when both gene expression and DNA methylation data are provided. However, **it also performs robustly with single modality input**.   
+
+    **Input**: (Both or at least one of them)   
+    - Gene expression Matrix (Gene as row, Sample as collumn)   
+    - DNA methylation Matrix (CpG site as row, Sample as collumn)   
+
+    **Output**:   
+    - Predicted Count Matrix (Sample as row, 5 cell types at the collumn)
+
+2. **Train Custom Models**:
+   - Train a new model tailored to your specific data.
+   - Input requirements for this function include:
+     - Gene expression data
+     - Methylation data
+     - Cell counts data
+   - Please note that the input data trio must originate from the same individuals for accurate model training.
+
+Feel free to adjust this text to fit your preferences and any additional information you'd like to include in your README.md.
 
 ## Installation
 
