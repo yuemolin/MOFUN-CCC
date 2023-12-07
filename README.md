@@ -170,13 +170,92 @@ python Main_predict.py \
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Parameters Detail
+<details>
+  <summary> Main_train.py </summary>
+  
+#### Input/Output Parameters
+
+>- `--Count` (str, required):    
+Path to a tab-separated text file containing cell counts data (rows: Samples, columns: Cell types).   
+>- `--RNA` (str, required):    
+Path to a tab-separated text file containing gene TPM data (rows: Genes, columns: Samples).   
+>- `--DNAm` (str, required):    
+Path to a tab-separated text file containing CpG Beta data (rows: CpGs, columns: Samples).   
+>- `--Output` (str, required):    
+Output folder path for saving the trained model.
+
+#### Marker Parameters
+>- `--GEP_Marker` (str):    
+Path to the marker file, a list of gene names, or an association matrix (generate when left blank).   
+>- `--DNAm_Marker` (str):   
+ Path to the marker file, a list of CpG names, or an association matrix (generate when left blank).
+>- `--Marker_Method` (str, choices: ["FC", "P"]):    
+Marker selection method, where "FC" stands for fold change, and "P" stands for p-value.
+>- `--RNA_Marker_num` (int, default: 6000):    
+Number of RNA markers to select based on the Marker_Method.
+>- `--DNAm_Marker_num` (int, default: 6000):    
+Number of DNAm markers to select based on the Marker_Method.
+
+#### Training Data Operation Parameters
+>- `--RNA_transform` (str, default: "Range", choices: ["Identity", "MeanStd", "Range"]):    
+RNA transformation method.
+>- `--DNAm_transform` (str, default: "Range", choices: ["Identity", "MeanStd", "Range", "Beta"]):    
+DNAm transformation method.
+>- `--transform_by_feature` (boolean):    
+Transform by feature if claimed; otherwise, by sample.
+>- `--Data_augmentation` (str, default: "Zero", choices: ["Zero", "Noise", "No"]):    
+Data augmentation method.
+>- `--scale_cellcounts` (boolean, default: True):   
+Scale cell counts by total cell counts.
+
+#### Model Parameters
+>- `--Model` (str, default: "./Models/Default_structure.json"):    
+Model structure file path (JSON format).
+>- `--Loss` (str, default: "L1loss", choices: ["L1loss", "L2loss", "CrossEntropy"]):    
+Loss function.
+>- `--Activation` (str, default: "relu", choices: ["relu", "leakyRelu", "Elu", "Celu", "Gelu"]):    
+Activation function.
+>- `--Dropout` (float, default: 0.2):   
+ Dropout rate of the first layer.
+>- `--Learning_rate` (float, default: 5e-5):   
+ Learning rate.
+>- `--Batch_num` (int, default: 80):    
+Number of batches.
+>- `--Epochs` (int, default: 100): Number of epochs.
+
+#### Other Parameters
+>- `--device` (str, default: "detect", choices: ["cuda", "cpu", "detect"]):   
+ Device to use for training.
+>- `--seed` (int, default: 424):    
+Random seed.
+
+</details>
+
+<details>
+  <summary> Main_predict.py </summary>
+
+#### Input Parameters
+>- `--RNA` (str):    
+Path to a tab-separated text file containing gene TPM data (rows: Genes, columns: Samples).
+>- `--DNAm` (str):    
+Path to a tab-separated text file containing CpG Beta data (rows: CpGs, columns: Samples).
+
+#### Output Parameter
+>- `--Output` (str, required):    
+Output filename for storing prediction results.
+
+#### Model Parameters
+>- `--Model_Path` (str, required):    
+Path to the saved model, which should contain at least the following files: Model_str.pkl, Model_dict.pt, and TrainShell.pkl.
+
+</details>
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Add Detailed parameters 
-- [ ] Add Help page
+- [x] Add Detailed parameters 
 - [ ] Add shiny app address
 - [ ] Add warnings (large file , linear regression time,)
 - [ ] Add data short cut to show actual data
