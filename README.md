@@ -25,10 +25,10 @@
     <p>
         MOFUN-CCC is a multi-modal deep learning algorithm that operates under a supervised framework, leveraging intermediate fusion techniques to process bulk gene expression and bulk DNA methylation data. Its primary objective is to generate absolute cell counts as its output.
         <br />
-        <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug
+        <a href="https://github.com/yuemolin/MOFUN-CCC/issues">Report Bug
         </a>
         ·
-        <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature
+        <a href="https://github.com/yuemolin/MOFUN-CCC/issues">Request Feature
         </a>
     </p>
 </div>
